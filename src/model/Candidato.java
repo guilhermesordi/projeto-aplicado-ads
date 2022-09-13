@@ -6,10 +6,10 @@ package model;
 
 public class Candidato {
     
-    int id;
-    String nome;
-    String partido;
-    boolean fichaLimpa;
+    private int id;
+    private String nome;
+    private String partido;
+    private boolean fichaLimpa;
 
     public int getId() {
         return id;

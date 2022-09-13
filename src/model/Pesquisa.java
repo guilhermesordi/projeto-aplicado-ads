@@ -8,13 +8,13 @@ import java.util.Date;
 
 public class Pesquisa {
 
-    int id;
-    String instituicao;
-    Date dataPesquisa;
-    String localPesquisa;
-    double mediaIdade;
-    int idTipoPesquisa;
-    int idFormatoPesquisa;
+    private int id;
+    private String instituicao;
+    private Date dataPesquisa;
+    private String localPesquisa;
+    private double mediaIdade;
+    private int idTipoPesquisa;
+    private int idFormatoPesquisa;
 
     public int getId() {
         return id;

@@ -6,8 +6,8 @@ package model;
 
 public class TipoPesquisa {
 
-    int id;
-    String descricao;
+    private int id;
+    private String descricao;
 
     public int getId() {
         return id;
