@@ -1,4 +1,4 @@
-package view;
+package view.CadastroUI;
 
 import java.awt.EventQueue;
 
