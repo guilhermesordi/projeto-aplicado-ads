@@ -19,6 +19,7 @@ import view.CadastroUI.CadastroPesquisaUI;
 import view.tables.CandidatoTableModel;
 import view.tables.PesquisaTableModel;
 
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.JTable;
@@ -32,6 +33,7 @@ import java.awt.event.ActionEvent;
 public class ConsultaPesquisaUI extends JInternalFrame {
 	private JTable jtPesquisa;
 
+
 	/**
 	 * Launch the application.
 	 */
@@ -40,6 +42,7 @@ public class ConsultaPesquisaUI extends JInternalFrame {
 			public void run() {
 				try {
 					ConsultaPesquisaUI frame = new ConsultaPesquisaUI();
+
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -74,6 +77,7 @@ public class ConsultaPesquisaUI extends JInternalFrame {
 				cadPesquisaUI.setPesquisaEdicao(pesquisa);
 				cadPesquisaUI.setVisible(true);
 				getParent().add(cadPesquisaUI, 0);
+
 			}
 		});
 		
