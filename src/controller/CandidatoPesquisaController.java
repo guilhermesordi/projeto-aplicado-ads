@@ -9,7 +9,7 @@ public class CandidatoPesquisaController {
 	
 	public void salvar(CandidatoPesquisa candidatoPesquisa) throws Exception {
 		
-		if (candidatoPesquisa.getId() == 0) {
+		if (candidatoPesquisa.getId() != 0) {
 			throw new Exception("Candidato Pesquisa inválido");
 		}
 		CandidatoPesquisaDao.getInstance().salvar(candidatoPesquisa);

@@ -67,7 +67,7 @@ public class TipoPesquisaDao {
 			while (rs.next()) {
 				TipoPesquisa tp = new TipoPesquisa();
 				tp.setId(rs.getInt("id"));
-				tp.setDescricao(rs.getString("descrição"));
+				tp.setDescricao(rs.getString("descricao"));
 				listaTP.add(tp);
 			}
 		} catch (SQLException e) {

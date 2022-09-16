@@ -1,4 +1,4 @@
-package view;
+package view.CadastroUI;
 
 import java.awt.EventQueue;
 
@@ -21,8 +21,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//ARQUIVO DESNECESSARIO, CONSTRAINTS NO BANCO NÃO PERMITEM CADASTRAR OUTROS TIPOS E FORMATOS
+
 public class CadastroTipoPesquisaUI extends JInternalFrame {
-	private JTextField txtID;
 	private JTextField txtDescricao;
 
 	/**
@@ -58,7 +59,7 @@ public class CadastroTipoPesquisaUI extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					TipoPesquisa t = new TipoPesquisa();
-					t.setId(Integer.parseInt(txtID.getText())); // ????
+					//t.setId(Integer.parseInt(txtID.getText())); // ????
 					t.setDescricao(txtDescricao.getText());
 					
 					new TipoPesquisaController().salvar(t);
@@ -66,6 +67,7 @@ public class CadastroTipoPesquisaUI extends JInternalFrame {
 					dispose();
 					
 				} catch (Exception ex) {
+					System.out.println(ex);
 					JOptionPane.showMessageDialog(null, "Erro ao salvar novo Tipo de Pesquisa");
 				}
 			}
@@ -104,12 +106,6 @@ public class CadastroTipoPesquisaUI extends JInternalFrame {
 					.addGap(23))
 		);
 		
-		JLabel lblID = new JLabel("ID");
-		lblID.setVerticalAlignment(SwingConstants.TOP);
-		
-		txtID = new JTextField();
-		txtID.setColumns(10);
-		
 		JLabel lblDescricao = new JLabel("Descrição");
 		
 		txtDescricao = new JTextField();
@@ -118,33 +114,20 @@ public class CadastroTipoPesquisaUI extends JInternalFrame {
 		gl_pnTipoPesquisa.setHorizontalGroup(
 			gl_pnTipoPesquisa.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnTipoPesquisa.createSequentialGroup()
-					.addGap(71)
-					.addGroup(gl_pnTipoPesquisa.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblID)
-						.addComponent(lblDescricao))
-					.addGroup(gl_pnTipoPesquisa.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_pnTipoPesquisa.createSequentialGroup()
-							.addGap(5)
-							.addComponent(txtID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_pnTipoPesquisa.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE))))
+					.addGap(68)
+					.addComponent(lblDescricao)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(49, Short.MAX_VALUE))
 		);
 		gl_pnTipoPesquisa.setVerticalGroup(
 			gl_pnTipoPesquisa.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnTipoPesquisa.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(gl_pnTipoPesquisa.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_pnTipoPesquisa.createSequentialGroup()
-							.addGap(10)
-							.addComponent(lblID)
-							.addGap(18)
-							.addGroup(gl_pnTipoPesquisa.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblDescricao)))
-						.addGroup(gl_pnTipoPesquisa.createSequentialGroup()
-							.addGap(5)
-							.addComponent(txtID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(95, Short.MAX_VALUE))
+						.addComponent(txtDescricao, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDescricao))
+					.addContainerGap(56, Short.MAX_VALUE))
 		);
 		pnTipoPesquisa.setLayout(gl_pnTipoPesquisa);
 		getContentPane().setLayout(groupLayout);

@@ -5,6 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import view.CadastroUI.CadastroCandidatoPesquisaUI;
+import view.CadastroUI.CadastroCandidatoUI;
+import view.CadastroUI.CadastroFormatoPesquisaUI;
+import view.CadastroUI.CadastroPesquisaUI;
+import view.CadastroUI.CadastroTipoPesquisaUI;
+import view.ConsultaUI.ConsultaCandidatoPesquisaUI;
+import view.ConsultaUI.ConsultaCandidatoUI;
+import view.ConsultaUI.ConsultaFormatoPesquisaUI;
+import view.ConsultaUI.ConsultaPesquisaUI;
+import view.ConsultaUI.ConsultaTipoPesquisaUI;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -15,6 +27,7 @@ import java.awt.FlowLayout;
 
 public class PrincipalUI extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -61,26 +74,26 @@ public class PrincipalUI extends JFrame {
 
 		JMenu mnCPesquisas = new JMenu("Pesquisas");
 		mbCadastros.add(mnCPesquisas);
-		JMenuItem mnCTipoPesquisas = new JMenuItem("Tipo Pesquisa");
-		mnCTipoPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroTipoPesquisaUI tipoPesquisa = new  CadastroTipoPesquisaUI();
-				tipoPesquisa.setVisible(true);
-				contentPane.add(tipoPesquisa, 0);
-			}
-		});
-		mnCPesquisas.add(mnCTipoPesquisas);
-
-		JMenuItem mntmCFormatoPesquisas = new JMenuItem("Formato Pesquisa");
-		mntmCFormatoPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroFormatoPesquisaUI formPesq = new CadastroFormatoPesquisaUI();
-				formPesq.setVisible(true);
-				contentPane.add(formPesq, 0);
-				
-			}
-		});
-		mnCPesquisas.add(mntmCFormatoPesquisas);
+//		JMenuItem mnCTipoPesquisas = new JMenuItem("Tipo Pesquisa");
+//		mnCTipoPesquisas.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				CadastroTipoPesquisaUI tipoPesquisa = new  CadastroTipoPesquisaUI();
+//				tipoPesquisa.setVisible(true);
+//				contentPane.add(tipoPesquisa, 0);
+//			}
+//		});
+//		mnCPesquisas.add(mnCTipoPesquisas);
+//
+//		JMenuItem mntmCFormatoPesquisas = new JMenuItem("Formato Pesquisa");
+//		mntmCFormatoPesquisas.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				CadastroFormatoPesquisaUI formPesq = new CadastroFormatoPesquisaUI();
+//				formPesq.setVisible(true);
+//				contentPane.add(formPesq, 0);
+//				
+//			}
+//		});
+//		mnCPesquisas.add(mntmCFormatoPesquisas);
 		
 		JMenuItem mntmPesquisas = new JMenuItem("Pesquisas");
 		mntmPesquisas.addActionListener(new ActionListener() {
@@ -88,7 +101,6 @@ public class PrincipalUI extends JFrame {
 				CadastroPesquisaUI pesq = new CadastroPesquisaUI();
 				pesq.setVisible(true);
 				contentPane.add(pesq, 0);
-				
 			}
 		});
 		mnCPesquisas.add(mntmPesquisas);
@@ -126,7 +138,7 @@ public class PrincipalUI extends JFrame {
 		JMenuItem mnRTipoPesquisas = new JMenuItem("Tipo Pesquisa");
 		mnRTipoPesquisas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroTipoPesquisaUI tipoPesquisa = new  CadastroTipoPesquisaUI();
+				ConsultaTipoPesquisaUI tipoPesquisa = new  ConsultaTipoPesquisaUI();
 				tipoPesquisa.setVisible(true);
 				contentPane.add(tipoPesquisa, 0);
 			}
@@ -136,7 +148,7 @@ public class PrincipalUI extends JFrame {
 		JMenuItem mntmRFormatoPesquisas = new JMenuItem("Formato Pesquisa");
 		mntmRFormatoPesquisas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroFormatoPesquisaUI formPesq = new CadastroFormatoPesquisaUI();
+				ConsultaFormatoPesquisaUI formPesq = new ConsultaFormatoPesquisaUI();
 				formPesq.setVisible(true);
 				contentPane.add(formPesq, 0);
 				
@@ -147,7 +159,7 @@ public class PrincipalUI extends JFrame {
 		JMenuItem mntmRPesquisas = new JMenuItem("Pesquisas");
 		mntmRPesquisas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroPesquisaUI pesq = new CadastroPesquisaUI();
+				ConsultaPesquisaUI pesq = new ConsultaPesquisaUI();
 				pesq.setVisible(true);
 				contentPane.add(pesq, 0);
 				
@@ -158,7 +170,7 @@ public class PrincipalUI extends JFrame {
 		JMenuItem mntmRPesquisaCandidato = new JMenuItem("Pesquisa de Candidato");
 		mntmRPesquisaCandidato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroCandidatoPesquisaUI pesqCand = new CadastroCandidatoPesquisaUI();
+				ConsultaCandidatoPesquisaUI pesqCand = new ConsultaCandidatoPesquisaUI();
 				pesqCand.setVisible(true);
 				contentPane.add(pesqCand, 0);
 				
@@ -166,133 +178,6 @@ public class PrincipalUI extends JFrame {
 		});
 		mnRPesquisas.add(mntmRPesquisaCandidato);
 		/////
-		
-		///// ATUALIZAR
-		JMenu mbAtualizar = new JMenu("Atualizar");
-		menuBar.add(mbAtualizar);
-		/////
-		
-		JMenuItem mntmUCandidatos = new JMenuItem("Candidatos");
-		mntmUCandidatos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ConsultaCandidatoUI updtCandidato = new ConsultaCandidatoUI();
-				updtCandidato.setVisible(true);
-				contentPane.add(updtCandidato, 0); 
-				
-			}
-		});
-		mbAtualizar.add(mntmUCandidatos);
-		
-		JMenu mnUPesquisas = new JMenu("Pesquisas");
-		mbAtualizar.add(mnUPesquisas);
-		
-		JMenuItem mnUTipoPesquisas = new JMenuItem("Tipo Pesquisa");
-		mnUTipoPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroTipoPesquisaUI updtTipoPesquisa = new CadastroTipoPesquisaUI();
-				updtTipoPesquisa.setVisible(true);
-				contentPane.add(updtTipoPesquisa, 0);
-			}
-		});
-		mnUPesquisas.add(mnUTipoPesquisas);
-
-		JMenuItem mntmUFormatoPesquisas = new JMenuItem("Formato Pesquisa");
-		mntmUFormatoPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroFormatoPesquisaUI updtFormPesq = new CadastroFormatoPesquisaUI();
-				updtFormPesq.setVisible(true);
-				contentPane.add(updtFormPesq, 0);
-				
-			}
-		});
-		mnUPesquisas.add(mntmUFormatoPesquisas);
-		
-		JMenuItem mntmUPesquisas = new JMenuItem("Pesquisas");
-		mntmUPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroPesquisaUI updtPesq = new CadastroPesquisaUI();
-				updtPesq.setVisible(true);
-				contentPane.add(updtPesq, 0);
-				
-			}
-		});
-		mnUPesquisas.add(mntmUPesquisas);
-		
-		JMenuItem mntmUPesquisaCandidato = new JMenuItem("Pesquisa de Candidato");
-		mntmUPesquisaCandidato.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroCandidatoPesquisaUI updtPesqCand = new CadastroCandidatoPesquisaUI();
-				updtPesqCand.setVisible(true);
-				contentPane.add(updtPesqCand, 0);
-				
-			}
-		});
-		mnUPesquisas.add(mntmUPesquisaCandidato);
-		/////
-		
-		///// REMOVER
-		JMenu mbRemover = new JMenu("Remover");
-		menuBar.add(mbRemover);
-		/////
-		
-		JMenuItem mntmDCandidatos = new JMenuItem("Candidatos");
-		mntmDCandidatos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ConsultaCandidatoUI dltCandidato = new ConsultaCandidatoUI();
-				dltCandidato.setVisible(true);
-				contentPane.add(dltCandidato, 0); 
-				
-			}
-		});
-		mbRemover.add(mntmDCandidatos);
-		
-		JMenu mnDPesquisas = new JMenu("Pesquisas");
-		mbRemover.add(mnDPesquisas);
-		
-		JMenuItem mnDTipoPesquisas = new JMenuItem("Tipo Pesquisa");
-		mnDTipoPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroTipoPesquisaUI dltTipoPesquisa = new CadastroTipoPesquisaUI();
-				dltTipoPesquisa.setVisible(true);
-				contentPane.add(dltTipoPesquisa, 0);
-			}
-		});
-		mnDPesquisas.add(mnDTipoPesquisas);
-
-		JMenuItem mntmDFormatoPesquisas = new JMenuItem("Formato Pesquisa");
-		mntmDFormatoPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroFormatoPesquisaUI dltFormPesq = new CadastroFormatoPesquisaUI();
-				dltFormPesq.setVisible(true);
-				contentPane.add(dltFormPesq, 0);
-				
-			}
-		});
-		mnDPesquisas.add(mntmDFormatoPesquisas);
-		
-		JMenuItem mntmDPesquisas = new JMenuItem("Pesquisas");
-		mntmDPesquisas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroPesquisaUI dltPesq = new CadastroPesquisaUI();
-				dltPesq.setVisible(true);
-				contentPane.add(dltPesq, 0);
-				
-			}
-		});
-		mnDPesquisas.add(mntmDPesquisas);
-		
-		JMenuItem mntmDPesquisaCandidato = new JMenuItem("Pesquisa de Candidato");
-		mntmDPesquisaCandidato.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastroCandidatoPesquisaUI dltPesqCand = new CadastroCandidatoPesquisaUI();
-				dltPesqCand.setVisible(true);
-				contentPane.add(dltPesqCand, 0);
-				
-			}
-		});
-		mnDPesquisas.add(mntmDPesquisaCandidato);
-		
-		
 		
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

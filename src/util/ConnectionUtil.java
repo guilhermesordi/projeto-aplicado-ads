@@ -7,17 +7,25 @@ public class ConnectionUtil {
 
     private static Connection con;
     
+//    public static void main(String args[]) {
+//    	getConnection();
+//    	
+//    }
+    
     public static Connection getConnection(){
         try { 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/poo";
-            con = DriverManager.getConnection(url,"root","");
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            con = DriverManager.getConnection(url,"postgres","159");
             con.setAutoCommit(true);
-            return con;
-        } catch ( ClassNotFoundException e){
+            System.out.println("Banco ligado com sucesso");
+            return con;      
+        } catch (ClassNotFoundException e){
             e.printStackTrace();
-        } catch ( SQLException se){
+            System.out.println("Erro ao ligar com o banco: " + e);
+        } catch (SQLException se){
             se.printStackTrace();
+            System.out.println("Erro ao ligar com o banco " + se);
         }
         return null;
     }

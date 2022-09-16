@@ -9,9 +9,9 @@ public class TipoPesquisaController {
 	
 	public void salvar(TipoPesquisa tipoPesquisa) throws Exception {
 		
-		if (tipoPesquisa.getId() == 0) {
-			throw new Exception("Tipo Pesquisa inválido");
-		}
+//		if (tipoPesquisa.getId() == 0) {
+//			throw new Exception("Tipo Pesquisa inválido");
+//		}
 		TipoPesquisaDao.getInstance().salvar(tipoPesquisa);
 	}
 	

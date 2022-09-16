@@ -1,4 +1,4 @@
-package view;
+package view.CadastroUI;
 
 import java.awt.EventQueue;
 
@@ -20,6 +20,10 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import model.FormatoPesquisa;
+
+
+// ARQUIVO DESNECESSARIO, CONSTRAINTS NO BANCO NÃO PERMITEM CADASTRAR OUTROS TIPOS E FORMATOS
+
 
 public class CadastroFormatoPesquisaUI extends JInternalFrame {
 	private JTextField txtID;
