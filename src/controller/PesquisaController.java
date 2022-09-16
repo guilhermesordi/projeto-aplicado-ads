@@ -8,9 +8,9 @@ public class PesquisaController {
 	
 	public void salvar(Pesquisa pesquisa) throws Exception {
 		
-		if (pesquisa.getId() == 0) {
-			throw new Exception("Pesquisa inválida");
-		}
+//		if (pesquisa.getId() == 0) {
+//			throw new Exception("Pesquisa inválida");
+//		}
 		PesquisaDao.getInstance().salvar(pesquisa);
 	}
 	

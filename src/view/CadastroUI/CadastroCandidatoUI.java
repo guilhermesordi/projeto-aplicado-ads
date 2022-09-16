@@ -1,4 +1,4 @@
-package view;
+package view.CadastroUI;
 
 import java.awt.EventQueue;
 
@@ -23,6 +23,7 @@ public class CadastroCandidatoUI extends JInternalFrame {
 	private JTextField txtNome;
 	private JTextField txtPartido;
 	private Candidato candidato;
+	private JComboBox cbFichaLimpa;
 
 	/**
 	 * Launch the application.
@@ -60,21 +61,35 @@ public class CadastroCandidatoUI extends JInternalFrame {
 		txtPartido.setToolTipText("");
 		txtPartido.setColumns(10);
 		
-		JComboBox cbFichaLimpa = new JComboBox();
+		cbFichaLimpa = new JComboBox();
 		cbFichaLimpa.setModel(new DefaultComboBoxModel(new String[] {"SIM", "NÃO"}));
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Candidato candidato = new Candidato();
-					candidato.setNome(txtNome.getText());
-					candidato.setPartido(txtPartido.getText());
-//					candidato.setFichaLimpa();
-					
-					new CandidatoController().salvar(candidato);
-					JOptionPane.showMessageDialog(null, "Candidato Salvo com Sucesso!");
-					dispose();
+					if (candidato != null && candidato.getId() > 0) {
+						candidato.setNome(txtNome.getText());
+						candidato.setPartido(txtPartido.getText());
+						candidato.setFichaLimpa(Boolean.parseBoolean(txtPartido.getText()));
+						
+						new CandidatoController().atualizar(candidato);
+						JOptionPane.showMessageDialog(null, "Candidato atualizado com sucesso");
+						dispose();
+					} else {
+						Candidato candidato = new Candidato();
+						candidato.setNome(txtNome.getText());
+						candidato.setPartido(txtPartido.getText());
+						if(cbFichaLimpa.getToolTipText() == "SIM") {
+							candidato.setFichaLimpa(true);
+						} else {
+							candidato.setFichaLimpa(false);
+						}
+						
+						new CandidatoController().salvar(candidato);
+						JOptionPane.showMessageDialog(null, "Candidato Salvo com Sucesso!");
+						dispose();
+					}
 	
 					
 				} catch (Exception ex) {
@@ -139,8 +154,20 @@ public class CadastroCandidatoUI extends JInternalFrame {
 
 	}
 
-	public void setCandidatoEdicao() {
-		// TODO Auto-generated method stub
-		
+	public void setCandidatoEdicao(Candidato candidato) {
+		this.candidato = candidato;
+		preencheFormulario();
+	}
+	
+	private void preencheFormulario() {
+		if(candidato != null) {
+			txtNome.setText(candidato.getNome());
+			txtPartido.setText(candidato.getPartido());
+			if(candidato.getFichaLimpa()) {
+				cbFichaLimpa.setToolTipText("SIM");
+			} else {
+				cbFichaLimpa.setToolTipText("NÃO");
+			}
+		}
 	}
 }

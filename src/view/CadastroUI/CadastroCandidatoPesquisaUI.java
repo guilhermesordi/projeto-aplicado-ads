@@ -1,4 +1,4 @@
-package view;
+package view.CadastroUI;
 
 import java.awt.EventQueue;
 
@@ -8,9 +8,11 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import controller.CandidatoController;
 import controller.CandidatoPesquisaController;
 import controller.FormatoPesquisaController;
 import controller.TipoPesquisaController;
+import model.Candidato;
 import model.CandidatoPesquisa;
 import model.TipoPesquisa;
 
@@ -24,10 +26,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class CadastroCandidatoPesquisaUI extends JInternalFrame {
-	private JTextField txtID;
 	private JTextField txtVotos;
 	private JTextField textField;
 	private JTextField textField_1;
+	private CandidatoPesquisa candidatoPesquisa;
 
 	/**
 	 * Launch the application.
@@ -61,15 +63,29 @@ public class CadastroCandidatoPesquisaUI extends JInternalFrame {
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					CandidatoPesquisa t = new CandidatoPesquisa();
-					t.setId(Integer.parseInt(txtID.getText())); // ????
-					
-					new CandidatoPesquisaController().salvar(t);
-					JOptionPane.showMessageDialog(null, "Pesquisa de Candidato Salvo com Sucesso!");
-					dispose();
+					if (candidatoPesquisa != null && candidatoPesquisa.getId() > 0) {
+						candidatoPesquisa.setVotos(Integer.parseInt(textField_1.getText()));
+						candidatoPesquisa.setIdPesquisa(Integer.parseInt(textField.getText()));
+						candidatoPesquisa.setIdCandidato(Integer.parseInt(txtVotos.getText()));
+						
+						new CandidatoPesquisaController().atualizar(candidatoPesquisa);
+						JOptionPane.showMessageDialog(null, "Candidato atualizado com sucesso");
+						dispose();
+					} else {
+						CandidatoPesquisa candidatoPesquisa = new CandidatoPesquisa();
+						candidatoPesquisa.setVotos(Integer.parseInt(textField_1.getText()));
+						candidatoPesquisa.setIdPesquisa(Integer.parseInt(textField.getText()));
+						candidatoPesquisa.setIdCandidato(Integer.parseInt(txtVotos.getText()));
+						
+						new CandidatoPesquisaController().salvar(candidatoPesquisa);
+						JOptionPane.showMessageDialog(null, "Candidato Salvo com Sucesso!");
+						dispose();
+					}
+	
 					
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "Erro ao salvar nova Pesquisa de Candidato");
+					System.out.println(ex);
+					JOptionPane.showMessageDialog(null, "Erro ao salvar novo Candidato");
 				}
 			}
 		});
@@ -107,12 +123,6 @@ public class CadastroCandidatoPesquisaUI extends JInternalFrame {
 					.addGap(23))
 		);
 		
-		JLabel lblID = new JLabel("ID");
-		lblID.setVerticalAlignment(SwingConstants.TOP);
-		
-		txtID = new JTextField();
-		txtID.setColumns(10);
-		
 		JLabel lblDescricao = new JLabel("ID Candidato");
 		
 		txtVotos = new JTextField();
@@ -139,16 +149,12 @@ public class CadastroCandidatoPesquisaUI extends JInternalFrame {
 									.addComponent(lblDescricao)
 									.addPreferredGap(ComponentPlacement.RELATED))
 								.addGroup(gl_pnCanPesquisa.createSequentialGroup()
-									.addGap(22)
-									.addComponent(lblID))
-								.addGroup(gl_pnCanPesquisa.createSequentialGroup()
 									.addGap(13)
 									.addComponent(lblVotos)))
 							.addGap(16)
 							.addGroup(gl_pnCanPesquisa.createParallelGroup(Alignment.LEADING)
 								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
 								.addComponent(txtVotos, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 							.addGap(57))
 						.addComponent(lblIdPesquisa)))
@@ -156,10 +162,6 @@ public class CadastroCandidatoPesquisaUI extends JInternalFrame {
 		gl_pnCanPesquisa.setVerticalGroup(
 			gl_pnCanPesquisa.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnCanPesquisa.createSequentialGroup()
-					.addGap(5)
-					.addGroup(gl_pnCanPesquisa.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblID)
-						.addComponent(txtID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(6)
 					.addGroup(gl_pnCanPesquisa.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDescricao)
@@ -180,6 +182,19 @@ public class CadastroCandidatoPesquisaUI extends JInternalFrame {
 		pnCanPesquisa.setLayout(gl_pnCanPesquisa);
 		getContentPane().setLayout(groupLayout);
 
+	}
+	
+	public void setCandidatoPesquisaEdicao(CandidatoPesquisa candidatoPesquisa) {
+		this.candidatoPesquisa = candidatoPesquisa;
+		preencheFormulario();
+	}
+	
+	private void preencheFormulario() {
+		if(candidatoPesquisa != null) {
+			textField_1.setText(String.valueOf(candidatoPesquisa.getVotos()));
+			textField.setText(String.valueOf(candidatoPesquisa.getIdPesquisa()));
+			txtVotos.setText(String.valueOf(candidatoPesquisa.getIdCandidato()));
+		}
 	}
 
 }

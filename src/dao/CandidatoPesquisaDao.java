@@ -26,6 +26,7 @@ public class CandidatoPesquisaDao {
 	
 	public void salvar(CandidatoPesquisa cp) {
 		try {
+			System.out.println("cp");
 			String sql = "insert into candidato_pesquisa (fk_candidatoID, fk_pesquisaID, votos) values (?, ?, ?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, cp.getIdCandidato());
@@ -71,8 +72,8 @@ public class CandidatoPesquisaDao {
 			while (rs.next()) {
 				CandidatoPesquisa cp = new CandidatoPesquisa();
 				cp.setId(rs.getInt("id"));
-				cp.setIdCandidato(rs.getInt("candidato id"));
-				cp.setIdPesquisa(rs.getInt("pesquisa id"));
+				cp.setIdCandidato(rs.getInt("fk_candidatoid"));
+				cp.setIdPesquisa(rs.getInt("fk_pesquisaid"));
 				cp.setVotos(rs.getInt("votos"));
 				listaCandidatoPesquisa.add(cp);
 			}

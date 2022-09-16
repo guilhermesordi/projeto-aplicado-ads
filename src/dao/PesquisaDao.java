@@ -34,7 +34,6 @@ public class PesquisaDao {
 			pstmt.setDouble(4, p.getMediaIdade());
 			pstmt.setInt(5, p.getIdTipoPesquisa());
 			pstmt.setInt(6, p.getIdFormatoPesquisa());
-
 			pstmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,12 +77,12 @@ public class PesquisaDao {
 			while (rs.next()) {
 				Pesquisa p = new Pesquisa();
 				p.setId(rs.getInt("id"));
-				p.setInstituicao(rs.getString("instituição"));
-				p.setDataPesquisa(rs.getDate("data"));
-				p.setLocalPesquisa(rs.getString("local"));
-				p.setMediaIdade(rs.getDouble("Média da idade"));
-				p.setIdTipoPesquisa(rs.getInt("tipo de pesquisa id"));
-				p.setIdFormatoPesquisa(rs.getInt("formato de pesquisa id"));
+				p.setInstituicao(rs.getString("instituicao"));
+				p.setDataPesquisa(rs.getDate("dataPesquisa"));
+				p.setLocalPesquisa(rs.getString("localPesquisa"));
+				p.setMediaIdade(rs.getDouble("media_idade"));
+				p.setIdTipoPesquisa(rs.getInt("fk_tipoPesquisa"));
+				p.setIdFormatoPesquisa(rs.getInt("fk_formatoPesquisa"));
 				listaPesquisa.add(p);
 			}
 		} catch (SQLException e) {

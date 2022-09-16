@@ -39,7 +39,7 @@ public class CandidatoDao {
 	
 	public void atualizar(Candidato candidato) { 
 		try {
-			String sql = "update cliente set nome = ?, partido = ?, ficha_limpa = ? where id = ?";
+			String sql = "update candidato set nome = ?, partido = ?, ficha_limpa = ? where id = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, candidato.getNome());
 			pstmt.setString(2, candidato.getPartido());
@@ -64,21 +64,21 @@ public class CandidatoDao {
 	
 	public List<Candidato> listar() {
 		List<Candidato> listaCandidato = new ArrayList<>();
-		try {
-			String sql = "select * from candidato";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			while (rs.next()) {
-				Candidato c = new Candidato();
-				c.setId(rs.getInt("id"));
-				c.setNome(rs.getString("nome"));
-				c.setPartido(rs.getString("partido"));
-				c.setFichaLimpa(rs.getBoolean("ficha limpa"));
-				listaCandidato.add(c);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		 try {
+		 	String sql = "select * from candidato";
+		 	Statement stmt = con.createStatement();
+		 	ResultSet rs = stmt.executeQuery(sql);
+		 	while (rs.next()) {
+		 		Candidato c = new Candidato();
+		 		c.setId(rs.getInt("id"));
+		 		c.setNome(rs.getString("nome"));
+		 		c.setPartido(rs.getString("partido"));
+		 		c.setFichaLimpa(rs.getBoolean("ficha_limpa"));
+		 		listaCandidato.add(c);
+		 	}
+		 } catch (SQLException e) {
+		 	e.printStackTrace();
+		 }
 		return listaCandidato;
 	}
 		
